@@ -10,4 +10,5 @@ export default defineConfig({
   site: "https://subnetcalculator.dev",
   integrations: [tailwind(), mdx(), sitemap(), icon()],
   adapter: awsAmplify(),
+  output: 'server',
 });
