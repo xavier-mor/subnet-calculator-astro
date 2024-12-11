@@ -4,51 +4,51 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Who Can Benefit from This Tool?",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+      "This tool is designed for network engineers, IT professionals, Cloud Architects DevOps and software engineers who need to configure their cloud network devices. However, it is open to anyone who requires its services.",
     icon: "bx:bxs-briefcase",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Who Developed This Tool?",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "Hello! I am the creator of this tool, a network engineer with over 15 years of experience. I designed this tool to simplify my daily tasks, as well as to assist others in the field. Although my work now primarily involves cloud network designs, the fundamental concepts of networking still apply. This tool is intended to make network configuration and management more efficient and accessible.",
     icon: "bx:bxs-window-alt",
   },
   {
-    title: "On-Demand Components",
+    title: "How Does It Work?",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+      "To utilize an IP subnet calculator, I simply input the network address and subnet mask. The calculator then outputs relevant subnet information such as the usable IP address range, number of subnets, number of hosts per subnet, network address, broadcast address, subnet mask, wildcard mask, and IPv4 APR domain.",
     icon: "bx:bxs-data",
   },
   {
-    title: "Broad Integration",
+    title: "What is an IP subnet, and why do we need them?",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
+      "As we know, an IP subnet is a logical division of an IP network into smaller segments. It is used to improve network performance, secure the network, and facilitate network administration. The IP address is divided into two parts: the network address and the host address. The first one identifies the subnet, while the second one identifies a device on the subnet. Later on we will get into more details.",
     icon: "bx:bxs-bot",
   },
   {
-    title: "SEO Enabled",
+    title: "What is the formula to calculat the subnet mask?",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
+      "To calculate the subnet mask, you need to determine the number of bits required for the network portion and the remaining bits for the host portion. The formula to calculate the subnet mask is 2^n - 1, where n is the number of bits in the network portion. For example, if you have 3 bits for the network portion, the formula would be 2^3 - 1 = 7, which means the subnet mask would be 255.255.255.248.",
     icon: "bx:bxs-file-find",
   },
   {
-    title: "Community",
+    title: "How to divide a subnet into 4 networks?",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
+      "To divide a network into 4 subnets, you need to borrow 2 bits from the host portion and add them to the network portion. This will give you 4 possible subnets. The new subnet mask would be 255.255.255.192.",
     icon: "bx:bxs-user",
   },
 ];
 ---
-
+<br><br><br>
 <div class="mt-16 md:mt-0">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+    Everything you need to start doing subnetting for your work.
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+I have been given the opportunity to introduce a subnetting calculator tool that allows users to obtain the subnets and addressable hosts of a given network. Created by a network engineer, this tool is designed to simplify the process of subnetting and make it more accessible to users.
+For those who are unfamiliar with subnetting, it is the process of dividing a network into smaller subnetworks, or subnets, in order to improve network performance and security. This tool is designed for anyone who needs to perform subnetting, from network engineers to students studying networking.
   </p>
 </div>
 
