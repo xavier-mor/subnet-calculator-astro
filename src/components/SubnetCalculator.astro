@@ -33,35 +33,53 @@ function numberToIp(num: number): string {
   ].join('.');
 }
 
-function calculateSubnet(ipAddress: string, cidrNotation: string): SubnetDetails {
-  const cidr = parseInt(cidrNotation.replace('/', ''));
-  const subnetMask = cidrToSubnetMask(cidr);
+function calculateSubnet(ipAddress, cidrNotation) {
+    const cidr = parseInt(cidrNotation.replace('/', ''));
+    const subnetMask = cidrToSubnetMask(cidr);
 
-  const ipNum = ipToNumber(ipAddress);
-  const maskNum = ipToNumber(subnetMask);
+    const ipNum = ipToNumber(ipAddress);
+    const maskNum = ipToNumber(subnetMask);
 
-  const networkNum = ipNum & maskNum;
-  const networkAddress = numberToIp(networkNum);
+    const networkNum = ipNum & maskNum;
+    const networkAddress = numberToIp(networkNum);
 
-  const invertedMask = ~maskNum;
-  const broadcastNum = networkNum | invertedMask;
-  const broadcastAddress = numberToIp(broadcastNum);
 
-  const firstUsableHost = numberToIp(networkNum + 1);
-  const lastUsableHost = numberToIp(broadcastNum - 1);
+    const invertedMask = ~maskNum >>> 0;
+    const broadcastNum = networkNum | invertedMask;
+    const broadcastAddress = numberToIp(broadcastNum);
 
-  const totalHosts = Math.pow(2, 32 - cidr) - 2;
+    const firstUsableHost = numberToIp(networkNum + 1);
+    const lastUsableHost = numberToIp(broadcastNum - 1);
 
-  return {
-    networkAddress,
-    broadcastAddress,
-    firstUsableHost,
-    lastUsableHost,
-    totalHosts,
-    subnetMask,
-    cidrNotation: `/${cidr}`
-  };
+    const totalHosts = Math.pow(2, 32 - cidr) - 2;
+
+    const toBinary = (num) => {
+        return num
+            .toString(2) // Converts the number to its binary representation as a string.
+            .padStart(32, '0') // Ensures the binary string is 32 bits long by padding with leading zeros.
+            .match(/.{8}/g) // Splits the 32-bit string into groups of 8 bits (to represent each octet of an IPv4 address).
+            .join('.'); // Joins the 8-bit groups with dots to match the dotted-decimal format of an IP address.
+    };
+
+    return {
+        ipAddress,
+        networkAddress,
+        broadcastAddress,
+        firstUsableHost,
+        lastUsableHost,
+        totalHosts,
+        subnetMask,
+        cidrNotation: `/${cidr}`,
+        binary: {
+            address: toBinary(ipNum),
+            netmask: toBinary(maskNum),
+            wildcard: toBinary(invertedMask),
+            network: toBinary(networkNum),
+            broadcast: toBinary(broadcastNum),
+        },
+    };
 }
+
 
 const cidrOptions = [
   { value: '/1', label: '/1 (128.0.0.0)', selected: '' },
@@ -217,39 +235,54 @@ if (Astro.request.method === 'POST') {
     </div>
   )}
 
-  {subnetResult && (
+{subnetResult && (
     <div class="mt-6 bg-gray-50 p-4 rounded-lg">
-      <h3 class="text-xl font-semibold mb-4">Subnet Details</h3>
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <p class="font-medium">Network Address:</p>
-          <p>{subnetResult.networkAddress}</p>
+        <h3 class="text-xl font-semibold mb-4">Subnet Details</h3>
+        <div class="grid grid-cols-1 gap-4">
+            <div>
+                <p class="font-mono">
+                    <strong>IP Address:</strong> {subnetResult.ipAddress} <br />
+                    <span class="text-gray-500">{subnetResult.binary.address}</span>
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>Netmask:</strong> {subnetResult.subnetMask} <br />
+                    <span class="text-gray-500">{subnetResult.binary.netmask}</span>
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>Wildcard Address:</strong> 0.0.0.255 <br />
+                    <span class="text-gray-500">{subnetResult.binary.wildcard}</span>
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>Network Adress:</strong> {subnetResult.networkAddress}{subnetResult.cidrNotation} (Class C) <br />
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>Broadcast Address:</strong> {subnetResult.broadcastAddress} <br />
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>HostMin:</strong> {subnetResult.firstUsableHost}
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>HostMax:</strong> {subnetResult.lastUsableHost}
+                </p>
+            </div>
+            <div>
+                <p class="font-mono">
+                    <strong>Hosts/Net:</strong> {subnetResult.totalHosts}
+                </p>
+            </div>
         </div>
-        <div>
-          <p class="font-medium">Broadcast Address:</p>
-          <p>{subnetResult.broadcastAddress}</p>
-        </div>
-        <div>
-          <p class="font-medium">First Usable Host:</p>
-          <p>{subnetResult.firstUsableHost}</p>
-        </div>
-        <div>
-          <p class="font-medium">Last Usable Host:</p>
-          <p>{subnetResult.lastUsableHost}</p>
-        </div>
-        <div>
-          <p class="font-medium">Total Hosts:</p>
-          <p>{subnetResult.totalHosts}</p>
-        </div>
-        <div>
-          <p class="font-medium">Subnet Mask:</p>
-          <p>{subnetResult.subnetMask}</p>
-        </div>
-        <div>
-          <p class="font-medium">CIDR Notation:</p>
-          <p>{subnetResult.cidrNotation}</p>
-        </div>
-      </div>
     </div>
-  )}
+)}
 </div>
