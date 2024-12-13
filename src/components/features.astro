@@ -6,19 +6,19 @@ const features = [
   {
     title: "Who Can Benefit from This Tool?",
     description:
-      "This tool is designed for network engineers, IT professionals, Cloud Architects DevOps and software engineers who need to configure their cloud network devices. However, it is open to anyone who requires its services.",
+      "This subnet calculator is designed to assist developers, DevOps engineers, network engineers, IT professionals, Cloud Architects, and software engineers in configuring their cloud networks. It's also readily available for anyone who needs to perform subnet calculations.",
     icon: "bx:bxs-briefcase",
   },
   {
-    title: "Who Developed This Tool?",
+    title: "Why this tool is different to the others?",
     description:
-      "Hello! I am the creator of this tool, a network engineer with over 15 years of experience. I designed this tool to simplify my daily tasks, as well as to assist others in the field. Although my work now primarily involves cloud network designs, the fundamental concepts of networking still apply. This tool is intended to make network configuration and management more efficient and accessible.",
+      "Created by a Network Cloud Engineer with over 15 years of experience. This tool is designed based on classic networking fundamentals, although the output has been adapted for compatibility with some public cloud providers.",
     icon: "bx:bxs-window-alt",
   },
   {
     title: "How Does It Work?",
     description:
-      "To utilize an IP subnet calculator, I simply input the network address and subnet mask. The calculator then outputs relevant subnet information such as the usable IP address range, number of subnets, number of hosts per subnet, network address, broadcast address, subnet mask, wildcard mask, and IPv4 APR domain.",
+      "I guess that it is self-explained but let me goTo utilize an IP subnet calculator, I simply input the network address and subnet mask. The calculator then outputs relevant subnet information such as the usable IP address range, number of subnets, number of hosts per subnet, network address, broadcast address, subnet mask, wildcard mask, and IPv4 APR domain.",
     icon: "bx:bxs-data",
   },
   {
@@ -28,15 +28,15 @@ const features = [
     icon: "bx:bxs-bot",
   },
   {
-    title: "What is the formula to calculat the subnet mask?",
+    title: "What is the formula to calculate the subnet mask?",
     description:
       "To calculate the subnet mask, you need to determine the number of bits required for the network portion and the remaining bits for the host portion. The formula to calculate the subnet mask is 2^n - 1, where n is the number of bits in the network portion. For example, if you have 3 bits for the network portion, the formula would be 2^3 - 1 = 7, which means the subnet mask would be 255.255.255.248.",
     icon: "bx:bxs-file-find",
   },
   {
-    title: "How to divide a subnet into 4 networks?",
+    title: "Why are some values in the output shown in binary?",
     description:
-      "To divide a network into 4 subnets, you need to borrow 2 bits from the host portion and add them to the network portion. This will give you 4 possible subnets. The new subnet mask would be 255.255.255.192.",
+      "Subnetting is fundamentally rooted in binary. Displaying the binary representation of IP addresses and subnet masks helps you visualize how subnets are represented in the way computers store and process information using binary code (1s and 0s).",
     icon: "bx:bxs-user",
   },
 ];
@@ -44,11 +44,11 @@ const features = [
 <br><br><br>
 <div class="mt-16 md:mt-0">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start doing subnetting for your work.
+    Everything you need to start IP subnetting for your work.
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-I have been given the opportunity to introduce a subnetting calculator tool that allows users to obtain the subnets and addressable hosts of a given network. Created by a network engineer, this tool is designed to simplify the process of subnetting and make it more accessible to users.
-For those who are unfamiliar with subnetting, it is the process of dividing a network into smaller subnetworks, or subnets, in order to improve network performance and security. This tool is designed for anyone who needs to perform subnetting, from network engineers to students studying networking.
+This subnet calculator tool empowers you to easily obtain subnet addresses and the number of available hosts within a given network. Created by a network engineer, this tool simplifies the subnetting process, making it more accessible for network engineers, students, and anyone who needs to perform subnetting calculations. </br> </br>
+Subnetting is the crucial process of dividing a network into smaller subnetworks, or subnets, to enhance network performance, improve security, and efficiently manage network resources. This tool provides a valuable resource for anyone learning or working with networks.
   </p>
 </div>
 
