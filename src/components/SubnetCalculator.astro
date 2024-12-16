@@ -10,6 +10,7 @@ interface SubnetDetails {
   subnetMask: string;
   cidrNotation: string;
   ipAddress: string;
+  awsReservedIPs?: string[];
   binary: {
     address: string;
     netmask: string;
@@ -41,7 +42,7 @@ function numberToIp(num: number): string {
   ].join('.');
 }
 
-function calculateSubnet(ipAddress: string, cidrNotation: string): SubnetDetails {
+function calculateSubnet(ipAddress: string, cidrNotation: string, isAwsNetwork: boolean): SubnetDetails {
     const cidr = parseInt(cidrNotation.replace('/', ''));
     const subnetMask = cidrToSubnetMask(cidr);
 
@@ -55,16 +56,32 @@ function calculateSubnet(ipAddress: string, cidrNotation: string): SubnetDetails
     const broadcastNum = networkNum | invertedMask;
     const broadcastAddress = numberToIp(broadcastNum);
 
-    const firstUsableHost = numberToIp(networkNum + 1);
-    const lastUsableHost = numberToIp(broadcastNum - 1);
+    let firstUsableHost = numberToIp(networkNum + 1);
+    let lastUsableHost = numberToIp(broadcastNum - 1);
+    let totalHosts = Math.pow(2, 32 - cidr) - 2;
 
-    const totalHosts = Math.pow(2, 32 - cidr) - 2;
+    // AWS Reserved IPs Calculation
+    let awsReservedIPs: string[] = [];
+    if (isAwsNetwork) {
+        // Calculate AWS reserved IPs
+        awsReservedIPs = [
+            numberToIp(networkNum),     // Network Address
+            numberToIp(networkNum + 1), // Router
+            numberToIp(networkNum + 2), // DNS Server
+            numberToIp(broadcastNum)    // Broadcast Address
+        ];
+
+        // Adjust first usable host and last usable host
+        firstUsableHost = numberToIp(networkNum + 5);
+        lastUsableHost = numberToIp(broadcastNum - 1);
+        totalHosts -= 4; // Subtract reserved IPs
+    }
 
     function toBinary(num: number): string {
-        return (num >>> 0)  // Use unsigned right shift to convert to unsigned 32-bit integer
-            .toString(2)    // Convert to binary string
-            .padStart(32, '0')  // Pad to 32 bits
-            .match(/.{8}/g)?.join('.') || '';  // Split into octets
+        return (num >>> 0)
+            .toString(2)
+            .padStart(32, '0')
+            .match(/.{8}/g)?.join('.') || '';
     }
 
     return {
@@ -76,6 +93,7 @@ function calculateSubnet(ipAddress: string, cidrNotation: string): SubnetDetails
         totalHosts,
         subnetMask,
         cidrNotation: `/${cidr}`,
+        awsReservedIPs,
         binary: {
             address: toBinary(ipNum),
             netmask: toBinary(maskNum),
@@ -135,20 +153,25 @@ function isValidIP(ip: string): boolean {
 // Server-side processing
 let subnetResult: SubnetDetails | null = null;
 let errorMessage: string | null = null;
-let formData: { ipAddress: string; cidrNotation: string } = {
+let formData: { 
+  ipAddress: string; 
+  cidrNotation: string; 
+  isAwsNetwork: boolean 
+} = {
   ipAddress: '192.168.0.1',
-  cidrNotation: '/24'
+  cidrNotation: '/24',
+  isAwsNetwork: false
 };
 
 if (Astro.request.method === 'POST') {
   try {
     const submittedFormData = await Astro.request.formData();
-    console.log('Form Data:', submittedFormData);
     const ipAddress = submittedFormData.get('ipAddress') as string;
     const cidrNotation = submittedFormData.get('cidrNotation') as string;
+    const isAwsNetwork = submittedFormData.get('isAwsNetwork') === 'on';
 
     // Update formData with the submitted values
-    formData = { ipAddress, cidrNotation };
+    formData = { ipAddress, cidrNotation, isAwsNetwork };
 
     if (!ipAddress || !isValidIP(ipAddress)) {
       errorMessage = 'Invalid IP address. Please enter a valid IPv4 address.';
@@ -156,7 +179,7 @@ if (Astro.request.method === 'POST') {
       errorMessage = 'Invalid CIDR notation. Please select a valid option.';
     } else {
       try {
-        subnetResult = calculateSubnet(ipAddress, cidrNotation);
+        subnetResult = calculateSubnet(ipAddress, cidrNotation, isAwsNetwork);
       } catch (err) {
         console.error('Subnet calculation error:', err.message);
         errorMessage = 'An error occurred while calculating the subnet. Please verify your input.';
@@ -167,11 +190,10 @@ if (Astro.request.method === 'POST') {
     errorMessage = 'An error occurred while processing your request.';
   }
 }
-
 ---
 
-<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-2xl">
-  <h2 class="text-2xl font-bold mb-6 text-center">IPv4 Subnetting</h2>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-center">IPv4 Subnet Calculator</h2>
   
   <form method="POST" class="space-y-4">
     <div>
@@ -204,6 +226,19 @@ if (Astro.request.method === 'POST') {
           </option>
         ))}
       </select>
+    </div>
+    
+    <div class="flex items-center">
+      <input 
+        type="checkbox" 
+        id="isAwsNetwork" 
+        name="isAwsNetwork" 
+        checked={formData.isAwsNetwork}
+        class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+      />
+      <label for="isAwsNetwork" class="ml-2 block text-sm text-gray-900">
+        Calculate for AWS Network (Exclude Reserved IPs)
+      </label>
     </div>
     
     <button 
@@ -279,6 +314,17 @@ if (Astro.request.method === 'POST') {
                     <strong>Hosts/Net:</strong> {subnetResult.totalHosts}
                 </p>
             </div>
+            {/* Conditionally render AWS Reserved IPs if applicable */}
+            {subnetResult.awsReservedIPs && subnetResult.awsReservedIPs.length > 0 && (
+                <div class="bg-yellow-50 p-3 rounded-lg shadow-sm">
+                    <p class="font-mono">
+                        <strong>AWS Reserved IPs Excluded:</strong><br />
+                        {subnetResult.awsReservedIPs.map(ip => (
+                            <span class="block text-gray-700">{ip}</span>
+                        ))}
+                    </p>
+                </div>
+            )}
         </div>
     </div>
   )}
