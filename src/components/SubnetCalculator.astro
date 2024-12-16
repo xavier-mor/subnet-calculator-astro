@@ -220,51 +220,61 @@ if (Astro.request.method === 'POST') {
     </div>
   )}
 
-  {subnetResult && (
+{subnetResult && (
     <div class="mt-6 bg-gray-50 p-4 rounded-lg">
         <h3 class="text-xl font-semibold mb-4">Subnet Details</h3>
-        <div class="grid grid-cols-1 gap-4">
-            <div>
-                <p class="font-mono">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>IP Address:</strong> {subnetResult.ipAddress} <br />
-                    <span class="text-gray-500">{subnetResult.binary.address}</span>
+                    <span class="text-gray-500 text-xs md:text-sm overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.address}
+                    </span>
                 </p>
             </div>
-            <div>
-                <p class="font-mono">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>Netmask:</strong> {subnetResult.subnetMask} <br />
-                    <span class="text-gray-500">{subnetResult.binary.netmask}</span>
+                    <span class="text-gray-500 text-xs md:text-sm overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.netmask}
+                    </span>
                 </p>
             </div>
-            <div>
-                <p class="font-mono">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>Broadcast Address:</strong> {subnetResult.broadcastAddress} <br />
-                    <span class="text-gray-500">{subnetResult.binary.broadcast}</span>
+                    <span class="text-gray-500 text-xs md:text-sm overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.broadcast}
+                    </span>
                 </p>
             </div>
-            <div>
-                <p class="font-mono">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>Wildcard Address:</strong> {numberToIp(~ipToNumber(subnetResult.subnetMask) >>> 0)} <br />
-                    <span class="text-gray-500">{subnetResult.binary.wildcard}</span>
+                    <span class="text-gray-500 text-xs md:text-sm overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.wildcard}
+                    </span>
                 </p>
             </div>
-            <div>
-                <p class="font-mono">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>Network Address:</strong> {subnetResult.networkAddress}{subnetResult.cidrNotation} <br />
-                    <span class="text-gray-500">{subnetResult.binary.network}</span>
+                    <span class="text-gray-500 text-xs md:text-sm overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.network}
+                    </span>
                 </p>
             </div>
-            <div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
                     <strong>HostMin:</strong> {subnetResult.firstUsableHost}
                 </p>
             </div>
-            <div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
                     <strong>HostMax:</strong> {subnetResult.lastUsableHost}
                 </p>
             </div>
-            <div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
                     <strong>Hosts/Net:</strong> {subnetResult.totalHosts}
                 </p>
@@ -272,4 +282,5 @@ if (Astro.request.method === 'POST') {
         </div>
     </div>
   )}
+
 </div>
