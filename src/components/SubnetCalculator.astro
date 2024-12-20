@@ -56,6 +56,9 @@ function calculateSubnet(ipAddress: string, cidrNotation: string, isAwsNetwork: 
     const broadcastNum = networkNum | invertedMask;
     const broadcastAddress = numberToIp(broadcastNum);
 
+    // Calculate next subnet block (add 1 to broadcast address)
+    const nextSubnetBlock = numberToIp(broadcastNum + 1);
+  
     let firstUsableHost = numberToIp(networkNum + 1);
     let lastUsableHost = numberToIp(broadcastNum - 1);
     let totalHosts = Math.pow(2, 32 - cidr) - 2;
@@ -93,6 +96,7 @@ function calculateSubnet(ipAddress: string, cidrNotation: string, isAwsNetwork: 
         totalHosts,
         subnetMask,
         cidrNotation: `/${cidr}`,
+        nextSubnetBlock,
         awsReservedIPs,
         binary: {
             address: toBinary(ipNum),
@@ -276,6 +280,14 @@ if (Astro.request.method === 'POST') {
             </div>
             <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono break-words">
+                    <strong>Network Address:</strong> {subnetResult.networkAddress}{subnetResult.cidrNotation} <br />
+                    <span class="text-gray-500 text-xs overflow-x-auto block whitespace-nowrap">
+                        Binary: {subnetResult.binary.network}
+                    </span>
+                </p>
+            </div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-mono break-words">
                     <strong>Broadcast Address:</strong> {subnetResult.broadcastAddress} <br />
                     <span class="text-gray-500 text-xs overflow-x-auto block whitespace-nowrap">
                         Binary: {subnetResult.binary.broadcast}
@@ -284,36 +296,36 @@ if (Astro.request.method === 'POST') {
             </div>
             <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono break-words">
-                    <strong>Wildcard Address:</strong> {numberToIp(~ipToNumber(subnetResult.subnetMask) >>> 0)} <br />
-                    <span class="text-gray-500 text-xs overflow-x-auto block whitespace-nowrap">
-                        Binary: {subnetResult.binary.wildcard}
-                    </span>
-                </p>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow-sm">
-                <p class="font-mono break-words">
-                    <strong>Network Address:</strong> {subnetResult.networkAddress}{subnetResult.cidrNotation} <br />
-                    <span class="text-gray-500 text-xs overflow-x-auto block whitespace-nowrap">
-                        Binary: {subnetResult.binary.network}
+                    <strong>Next Subnet Block:</strong> {subnetResult.nextSubnetBlock}{subnetResult.cidrNotation} <br />
+                    <span class="text-gray-500 text-xs">
+                        (First next subnet block available)
                     </span>
                 </p>
             </div>
             <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
-                    <strong>HostMin:</strong> {subnetResult.firstUsableHost}
+                    <strong>HostMin:</strong> {subnetResult.firstUsableHost}  <br />
+                    <span class="text-gray-500 text-xs">
+                        (First usable IP address after the network address)
+                    </span>
                 </p>
             </div>
             <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
-                    <strong>HostMax:</strong> {subnetResult.lastUsableHost}
+                    <strong>HostMax:</strong> {subnetResult.lastUsableHost}  <br />
+                    <span class="text-gray-500 text-xs">
+                        (Last usable IP address before the broadcast address)
+                    </span>
                 </p>
             </div>
             <div class="bg-white p-3 rounded-lg shadow-sm">
                 <p class="font-mono">
-                    <strong>Hosts/Net:</strong> {subnetResult.totalHosts}
+                    <strong>Hosts/Net:</strong> {subnetResult.totalHosts}  <br />
+                    <span class="text-gray-500 text-xs">
+                        (Number of usable hosts or IP addresses)
+                    </span>
                 </p>
             </div>
-            {/* Conditionally render AWS Reserved IPs if applicable */}
             {subnetResult.awsReservedIPs && subnetResult.awsReservedIPs.length > 0 && (
                 <div class="bg-yellow-50 p-3 rounded-lg shadow-sm">
                     <p class="font-mono">
@@ -326,7 +338,7 @@ if (Astro.request.method === 'POST') {
             )}
         </div>
     </div>
-  )}
+)}
 
 
 </div>
