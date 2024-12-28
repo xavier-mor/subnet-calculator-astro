@@ -53,42 +53,132 @@ const features = [
   },
 ];
 ---
-<br><br><br>
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
-    Everything you need to start IP subnetting for your work.
-  </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    This subnet calculator tool empowers you to easily obtain subnet addresses and the number of available hosts within a given network. Created by a network engineer, this tool simplifies the subnetting process, making it more accessible for network engineers, students, and anyone who needs to
-    perform subnetting calculations. </br> </br>
-    Subnetting is the crucial process of dividing a network into smaller subnetworks, or subnets, to enhance network performance, improve security, and efficiently manage network resources. This tool provides a valuable resource for anyone learning or working with networks.
-  </p>
-</div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-  {
-  features.map((item) => (
-  <div class="flex gap-4 items-start">
-    <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-      <Icon class="text-white" name={item.icon} />
+
+<br><br><br>
+<div class="mt-16 md:mt-0 ">
+  <div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+    How to Use a Free Subnet Calculator for Developers
+  </h2>
+    <br><br>
+    <p class="text-lg text-slate-600 mb-8">
+      A subnet calculator is an essential tool for network engineers, cloud architects, DevOps, developers and IT professionals. This guide will walk you through how to effectively use a subnet calculator to plan, design and manage your network infrastructure well.
+    </p>
+
+    <h3 class="text-2xl font-bold mb-4">What is a Subnet Calculator?</h3>
+    <p class="text-lg text-slate-600 mb-4">
+      A subnet calculator is an assistant that helps you determine various network parameters from an IP address and subnet mask. It's important for:
+    </p>
+    <ul class="list-disc pl-8 mb-8 text-slate-600 space-y-2">
+      <li>Network planning and segmentation</li>
+      <li>IP address allocation</li>
+      <li>Understanding networks</li>
+      <li>CIDR notation calculations</li>
+    </ul>
+
+    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+      <h3 class="text-2xl font-bold mb-6">Step-by-Step Guide to Use a Subnet Calculator</h3>
+      
+      <div class="space-y-6">
+        <div>
+          <h4 class="text-xl font-semibold mb-2">1. Enter the IP Address</h4>
+          <p class="text-slate-600">Input your base IP address (e.g., <code class="bg-gray-100 px-2 py-1 rounded">192.168.1.0</code>) into the calculator's IP address field.</p>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-semibold mb-2">2. Specify the Subnet Mask</h4>
+          <p class="text-slate-600">The mask can be selected from the available formats using the dropdown menu:</p>
+          <ul class="list-disc pl-8 mt-2 space-y-2 text-slate-600">
+            <li>Decimal notation (e.g., <code class="bg-gray-100 px-2 py-1 rounded">255.255.255.0</code>)</li>
+            <li>CIDR notation (e.g., <code class="bg-gray-100 px-2 py-1 rounded">/24</code>)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-semibold mb-2">3. Is the subnetting for an AWS VPC network?</h4>
+            <p class="text-slate-600">If the answer is yes, select the 'Calculate for AWS Network' checkbox.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-semibold mb-2">4. Analyze the Results</h4>
+          <p class="text-slate-600">The calculator will display important network information:</p>
+          <ul class="list-disc pl-8 mt-2 space-y-2 text-slate-600">
+            <li>IP address (decimal and binary)</li>
+            <li>Netmask address (decimal and binary)</li>
+            <li>Network address (decimal and binary)</li>
+            <li>Broadcast address (decimal and binary)</li>
+            <li>First next subnet block available</li>
+            <li>First and last usable IP addresses</li>
+            <li>First usable IP address after the network address</li>
+            <li>Last usable IP address before the broadcast address</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-      <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+
+    <div class="bg-green-50 p-6 rounded-lg mb-8">
+      <h3 class="text-2xl font-bold mb-4">Practical Example</h3>
+      <p class="text-slate-600 mb-4">Let's calculate a subnet for a small office network:</p>
+      <div class="bg-white p-4 rounded-lg mb-4">
+        <ul class="space-y-2 text-slate-600">
+          <li>IP Address: <code class="bg-gray-100 px-2 py-1 rounded">192.168.1.0</code></li>
+          <li>Subnet Mask: <code class="bg-gray-100 px-2 py-1 rounded">255.255.255.0</code> (or <code class="bg-gray-100 px-2 py-1 rounded">/24</code>)</li>
+        </ul>
+      </div>
+      <p class="font-semibold mb-2">Results:</p>
+      <ul class="list-disc pl-8 text-slate-600 space-y-2">
+        <li>Network Address: 192.168.1.0</li>
+        <li>Broadcast Address: 192.168.1.255</li>
+        <li>First Usable IP: 192.168.1.1</li>
+        <li>Last Usable IP: 192.168.1.254</li>
+        <li>Total Usable Hosts: 254</li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+      <h3 class="text-2xl font-bold mb-4">Pro Tips</h3>
+      <ul class="list-disc pl-8 text-slate-600 space-y-2">
+        <li>Consider future growth when choose subnet sizes</li>
+        <li>Document your subnet assignments for easier network management. You can start by using Excel, and then transition to an IP Address Management (IPAM) system.</li>
+        <li>Verify your calculations with other peers when you planning production networks.</li>
+      </ul>
     </div>
   </div>
-  ))
-  }
 </div>
 
-<br><br><br>
-{/* Add Subnet Reference Table */}
-<h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
-  IPv4 Subnet Reference Table
-</h2>
-<div class="mt-8 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md overflow-x-auto">
+<div class="mt-16 md:mt-0">
 
-  <table class="min-w-full table-auto">
+<div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
+    FAQ
+  </h2>
+<div class="grid sm:grid-cols-2 md:grid-cols-1 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+</div>
+</div>
+
+<br><br>
+<div class="mt-16 md:mt-0">
+  <div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
+    IPv4 Subnet Reference Table
+  </h2>
+    <table class="min-w-full table-auto">
     <thead>
       <tr class="bg-gray-100">
         <th class="px-4 py-2 text-left">CIDR</th>
@@ -326,25 +416,26 @@ const features = [
     </tbody>
   </table>
 
-  <div class="mt-4 text-sm text-gray-600">
-    <p><strong>Notes:</strong></p>
-    <ul class="list-disc pl-5 space-y-1">
-      <li>Usable Hosts = Total IPs - 2 (except for /31 and /32 which can use all addresses)</li>
-      <li>Special cases:
-        <ul class="list-disc pl-5 mt-1">
-          <li>/32: Single host address (used for single host routes)</li>
-          <li>/31: Point-to-point links (RFC 3021) - allows using both IPs</li>
-        </ul>
-      </li>
-      <li>For AWS VPCs, subtract an additional 5 IPs from usable hosts for:
-        <ul class="list-disc pl-5 mt-1">
-          <li>Network address</li>
-          <li>VPC router (first IP in subnet)</li>
-          <li>DNS server (second IP)</li>
-          <li>Future AWS use (third IP)</li>
-          <li>Broadcast address (last IP)</li>
-        </ul>
-      </li>
-    </ul>
+    <div class="mt-4 text-sm text-gray-600">
+      <p><strong>Notes:</strong></p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Usable Hosts = Total IPs - 2 (except for /31 and /32 which can use all addresses)</li>
+        <li>Special cases:
+          <ul class="list-disc pl-5 mt-1">
+            <li>/32: Single host address (used for single host routes)</li>
+            <li>/31: Point-to-point links (RFC 3021) - allows using both IPs</li>
+          </ul>
+        </li>
+        <li>For AWS VPCs, subtract an additional 5 IPs from usable hosts for:
+          <ul class="list-disc pl-5 mt-1">
+            <li>Network address</li>
+            <li>VPC router (first IP in subnet)</li>
+            <li>DNS server (second IP)</li>
+            <li>Future AWS use (third IP)</li>
+            <li>Broadcast address (last IP)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
