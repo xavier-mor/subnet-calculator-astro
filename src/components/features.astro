@@ -3,54 +3,54 @@
 import { Icon } from "astro-icon/components";
 
 const features = [
-  {
-    title: "Who Can Benefit from This Tool?",
-    description:
-      "This subnet calculator is designed to assist developers, DevOps engineers, network engineers, IT professionals, Cloud Architects, and software engineers in configuring their cloud networks. It's also readily available for anyone who needs to perform subnet calculations.",
-    icon: "bx:bxs-briefcase",
-  },
-  {
-    title: "Why this tool is different to the others?",
-    description:
-      "Created by a Network Cloud Engineer with over 15 years of experience. This tool is designed based on classic networking fundamentals, although the output has been adapted for compatibility with some public cloud providers.",
-    icon: "bx:bxs-window-alt",
-  },
-  {
-    title: "How Does It Work?",
-    description:
-      "I guess that it is self-explained but let me goTo utilize an IP subnet calculator, I simply input the network address and subnet mask. The calculator then outputs relevant subnet information such as the usable IP address range, number of subnets, number of hosts per subnet, network address, broadcast address, subnet mask, wildcard mask, and IPv4 APR domain.",
-    icon: "bx:bxs-data",
-  },
-  {
-    title: "Can it be effectively used as a cloud networking calculator?",
-    description:
-      "Yes, this calculator can be used in cloud environments. The networking concepts and subnetting principles generally apply. However, you need to consider some reserved IP addresses that may differ in cloud environments.",
-    icon: "bx:bxs-bot",
-  },
-  {
-    title: "What is the formula to calculate the subnet mask?",
-    description:
-      "To calculate the subnet mask, you need to determine the number of bits required for the network portion and the remaining bits for the host portion. The formula to calculate the subnet mask is 2^n - 1, where n is the number of bits in the network portion. For example, if you have 3 bits for the network portion, the formula would be 2^3 - 1 = 7, which means the subnet mask would be 255.255.255.248.",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Why are some values in the output shown in binary?",
-    description:
-      "Subnetting is fundamentally rooted in binary. Displaying the binary representation of IP addresses and subnet masks helps you visualize how subnets are represented in the way computers store and process information using binary code (1s and 0s).",
-    icon: "bx:bxs-user",
-  },
-  {
-    title: "Subnet Mask Explanation",
-    description:
-      "Technically, a subnet mask is a 32-bit number used to divide IP addresses into two parts: network and host addresses. The first part identifies the network to which the device belongs, while the second part identifies the device itself within that network.",
-    icon: "bx:bxs-user",
-  },
-  {
-    title: "Why do we need subnets?",
-    description:
-      "Better IP allocation by dividing a large network into smaller subnetworks. Better network performance by reducing the number of broadcast domains and their size. Improved security by limiting the scope of potential attacks.",
-    icon: "bx:bxs-user",
-  },
+{
+title: "Who Can Benefit from This Tool?",
+description:
+"This subnet calculator is designed to assist developers, DevOps engineers, network engineers, IT professionals, Cloud Architects, and software engineers in configuring their cloud networks. It's also readily available for anyone who needs to perform subnet calculations.",
+icon: "bx:bxs-briefcase",
+},
+{
+title: "Why this tool is different to the others?",
+description:
+"Created by a Network Cloud Engineer with over 15 years of experience. This tool is designed based on classic networking fundamentals, although the output has been adapted for compatibility with some public cloud providers.",
+icon: "bx:bxs-window-alt",
+},
+{
+title: "How Does It Work?",
+description:
+"I guess that it is self-explained but let me goTo utilize an IP subnet calculator, I simply input the network address and subnet mask. The calculator then outputs relevant subnet information such as the usable IP address range, number of subnets, number of hosts per subnet, network address, broadcast address, subnet mask, wildcard mask, and IPv4 APR domain.",
+icon: "bx:bxs-data",
+},
+{
+title: "Can it be effectively used as a cloud networking calculator?",
+description:
+"Yes, this calculator can be used in cloud environments. The networking concepts and subnetting principles generally apply. However, you need to consider some reserved IP addresses that may differ in cloud environments.",
+icon: "bx:bxs-bot",
+},
+{
+title: "What is the formula to calculate the subnet mask?",
+description:
+"To calculate the subnet mask, you need to determine the number of bits required for the network portion and the remaining bits for the host portion. The formula to calculate the subnet mask is 2^n - 1, where n is the number of bits in the network portion. For example, if you have 3 bits for the network portion, the formula would be 2^3 - 1 = 7, which means the subnet mask would be 255.255.255.248.",
+icon: "bx:bxs-file-find",
+},
+{
+title: "Why are some values in the output shown in binary?",
+description:
+"Subnetting is fundamentally rooted in binary. Displaying the binary representation of IP addresses and subnet masks helps you visualize how subnets are represented in the way computers store and process information using binary code (1s and 0s).",
+icon: "bx:bxs-user",
+},
+{
+title: "Subnet Mask Explanation",
+description:
+"Technically, a subnet mask is a 32-bit number used to divide IP addresses into two parts: network and host addresses. The first part identifies the network to which the device belongs, while the second part identifies the device itself within that network.",
+icon: "bx:bxs-user",
+},
+{
+title: "Why do we need subnets?",
+description:
+"Better IP allocation by dividing a large network into smaller subnetworks. Better network performance by reducing the number of broadcast domains and their size. Improved security by limiting the scope of potential attacks.",
+icon: "bx:bxs-user",
+},
 ];
 ---
 
@@ -59,9 +59,9 @@ const features = [
 <div class="mt-16 md:mt-0 ">
   <div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
 
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
-    How to Use a Free Subnet Calculator for Developers
-  </h2>
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+      How to Use a Free Subnet Calculator for Developers
+    </h2>
     <br><br>
     <p class="text-lg text-slate-600 mb-8">
       A subnet calculator is an essential tool for network engineers, cloud architects, DevOps, developers and IT professionals. This guide will walk you through how to effectively use a subnet calculator to plan, design and manage your network infrastructure well.
@@ -80,7 +80,7 @@ const features = [
 
     <div class="bg-gray-50 p-6 rounded-lg mb-8">
       <h3 class="text-2xl font-bold mb-6">Step-by-Step Guide to Use a Subnet Calculator</h3>
-      
+
       <div class="space-y-6">
         <div>
           <h4 class="text-xl font-semibold mb-2">1. Enter the IP Address</h4>
@@ -98,7 +98,7 @@ const features = [
 
         <div>
           <h4 class="text-xl font-semibold mb-2">3. Is the subnetting for an AWS VPC network?</h4>
-            <p class="text-slate-600">If the answer is yes, select the 'Calculate for AWS Network' checkbox.</p>
+          <p class="text-slate-600">If the answer is yes, select the 'Calculate for AWS Network' checkbox.</p>
         </div>
         <div>
           <h4 class="text-xl font-semibold mb-2">4. Analyze the Results</h4>
@@ -149,13 +149,13 @@ const features = [
 
 <div class="mt-16 md:mt-0">
 
-<div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
-    FAQ
-  </h2>
-<div class="grid sm:grid-cols-2 md:grid-cols-1 mt-16 gap-16">
-  {
-    features.map((item) => (
+  <div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
+      FAQ
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-1 mt-16 gap-16">
+      {
+      features.map((item) => (
       <div class="flex gap-4 items-start">
         <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
@@ -165,256 +165,256 @@ const features = [
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>
-    ))
-  }
-</div>
-</div>
+      ))
+      }
+    </div>
+  </div>
 </div>
 
 <br><br>
 <div class="mt-16 md:mt-0">
   <div class="mt-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
 
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
-    IPv4 Subnet Reference Table
-  </h2>
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
+      IPv4 Subnet Reference Table
+    </h2>
     <table class="min-w-full table-auto">
-    <thead>
-      <tr class="bg-gray-100">
-        <th class="px-4 py-2 text-left">CIDR</th>
-        <th class="px-4 py-2 text-left">Subnet Mask</th>
-        <th class="px-4 py-2 text-left">Wildcard</th>
-        <th class="px-4 py-2 text-right">Total IPs</th>
-        <th class="px-4 py-2 text-right">Usable Hosts</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/32</td>
-        <td class="px-4 py-2">255.255.255.255</td>
-        <td class="px-4 py-2">0.0.0.0</td>
-        <td class="px-4 py-2 text-right">1</td>
-        <td class="px-4 py-2 text-right">1</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/31</td>
-        <td class="px-4 py-2">255.255.255.254</td>
-        <td class="px-4 py-2">0.0.0.1</td>
-        <td class="px-4 py-2 text-right">2</td>
-        <td class="px-4 py-2 text-right">2</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/30</td>
-        <td class="px-4 py-2">255.255.255.252</td>
-        <td class="px-4 py-2">0.0.0.3</td>
-        <td class="px-4 py-2 text-right">4</td>
-        <td class="px-4 py-2 text-right">2</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/29</td>
-        <td class="px-4 py-2">255.255.255.248</td>
-        <td class="px-4 py-2">0.0.0.7</td>
-        <td class="px-4 py-2 text-right">8</td>
-        <td class="px-4 py-2 text-right">6</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/28</td>
-        <td class="px-4 py-2">255.255.255.240</td>
-        <td class="px-4 py-2">0.0.0.15</td>
-        <td class="px-4 py-2 text-right">16</td>
-        <td class="px-4 py-2 text-right">14</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/27</td>
-        <td class="px-4 py-2">255.255.255.224</td>
-        <td class="px-4 py-2">0.0.0.31</td>
-        <td class="px-4 py-2 text-right">32</td>
-        <td class="px-4 py-2 text-right">30</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/26</td>
-        <td class="px-4 py-2">255.255.255.192</td>
-        <td class="px-4 py-2">0.0.0.63</td>
-        <td class="px-4 py-2 text-right">64</td>
-        <td class="px-4 py-2 text-right">62</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/25</td>
-        <td class="px-4 py-2">255.255.255.128</td>
-        <td class="px-4 py-2">0.0.0.127</td>
-        <td class="px-4 py-2 text-right">128</td>
-        <td class="px-4 py-2 text-right">126</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/24</td>
-        <td class="px-4 py-2">255.255.255.0</td>
-        <td class="px-4 py-2">0.0.0.255</td>
-        <td class="px-4 py-2 text-right">256</td>
-        <td class="px-4 py-2 text-right">254</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/23</td>
-        <td class="px-4 py-2">255.255.254.0</td>
-        <td class="px-4 py-2">0.0.1.255</td>
-        <td class="px-4 py-2 text-right">512</td>
-        <td class="px-4 py-2 text-right">510</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/22</td>
-        <td class="px-4 py-2">255.255.252.0</td>
-        <td class="px-4 py-2">0.0.3.255</td>
-        <td class="px-4 py-2 text-right">1,024</td>
-        <td class="px-4 py-2 text-right">1,022</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/21</td>
-        <td class="px-4 py-2">255.255.248.0</td>
-        <td class="px-4 py-2">0.0.7.255</td>
-        <td class="px-4 py-2 text-right">2,048</td>
-        <td class="px-4 py-2 text-right">2,046</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/20</td>
-        <td class="px-4 py-2">255.255.240.0</td>
-        <td class="px-4 py-2">0.0.15.255</td>
-        <td class="px-4 py-2 text-right">4,096</td>
-        <td class="px-4 py-2 text-right">4,094</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/19</td>
-        <td class="px-4 py-2">255.255.224.0</td>
-        <td class="px-4 py-2">0.0.31.255</td>
-        <td class="px-4 py-2 text-right">8,192</td>
-        <td class="px-4 py-2 text-right">8,190</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/18</td>
-        <td class="px-4 py-2">255.255.192.0</td>
-        <td class="px-4 py-2">0.0.63.255</td>
-        <td class="px-4 py-2 text-right">16,384</td>
-        <td class="px-4 py-2 text-right">16,382</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/17</td>
-        <td class="px-4 py-2">255.255.128.0</td>
-        <td class="px-4 py-2">0.0.127.255</td>
-        <td class="px-4 py-2 text-right">32,768</td>
-        <td class="px-4 py-2 text-right">32,766</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/16</td>
-        <td class="px-4 py-2">255.255.0.0</td>
-        <td class="px-4 py-2">0.0.255.255</td>
-        <td class="px-4 py-2 text-right">65,536</td>
-        <td class="px-4 py-2 text-right">65,534</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/15</td>
-        <td class="px-4 py-2">255.254.0.0</td>
-        <td class="px-4 py-2">0.1.255.255</td>
-        <td class="px-4 py-2 text-right">131,072</td>
-        <td class="px-4 py-2 text-right">131,070</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/14</td>
-        <td class="px-4 py-2">255.252.0.0</td>
-        <td class="px-4 py-2">0.3.255.255</td>
-        <td class="px-4 py-2 text-right">262,144</td>
-        <td class="px-4 py-2 text-right">262,142</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/13</td>
-        <td class="px-4 py-2">255.248.0.0</td>
-        <td class="px-4 py-2">0.7.255.255</td>
-        <td class="px-4 py-2 text-right">524,288</td>
-        <td class="px-4 py-2 text-right">524,286</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/12</td>
-        <td class="px-4 py-2">255.240.0.0</td>
-        <td class="px-4 py-2">0.15.255.255</td>
-        <td class="px-4 py-2 text-right">1,048,576</td>
-        <td class="px-4 py-2 text-right">1,048,574</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/11</td>
-        <td class="px-4 py-2">255.224.0.0</td>
-        <td class="px-4 py-2">0.31.255.255</td>
-        <td class="px-4 py-2 text-right">2,097,152</td>
-        <td class="px-4 py-2 text-right">2,097,150</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/10</td>
-        <td class="px-4 py-2">255.192.0.0</td>
-        <td class="px-4 py-2">0.63.255.255</td>
-        <td class="px-4 py-2 text-right">4,194,304</td>
-        <td class="px-4 py-2 text-right">4,194,302</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/9</td>
-        <td class="px-4 py-2">255.128.0.0</td>
-        <td class="px-4 py-2">0.127.255.255</td>
-        <td class="px-4 py-2 text-right">8,388,608</td>
-        <td class="px-4 py-2 text-right">8,388,606</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/8</td>
-        <td class="px-4 py-2">255.0.0.0</td>
-        <td class="px-4 py-2">0.255.255.255</td>
-        <td class="px-4 py-2 text-right">16,777,216</td>
-        <td class="px-4 py-2 text-right">16,777,214</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/7</td>
-        <td class="px-4 py-2">254.0.0.0</td>
-        <td class="px-4 py-2">1.255.255.255</td>
-        <td class="px-4 py-2 text-right">33,554,432</td>
-        <td class="px-4 py-2 text-right">33,554,430</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/6</td>
-        <td class="px-4 py-2">252.0.0.0</td>
-        <td class="px-4 py-2">3.255.255.255</td>
-        <td class="px-4 py-2 text-right">67,108,864</td>
-        <td class="px-4 py-2 text-right">67,108,862</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/5</td>
-        <td class="px-4 py-2">248.0.0.0</td>
-        <td class="px-4 py-2">7.255.255.255</td>
-        <td class="px-4 py-2 text-right">536,870,912</td>
-        <td class="px-4 py-2 text-right">536,870,910</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/4</td>
-        <td class="px-4 py-2">240.0.0.0</td>
-        <td class="px-4 py-2">15.255.255.255</td>
-        <td class="px-4 py-2 text-right">1,073,741,824</td>
-        <td class="px-4 py-2 text-right">1,073,741,822</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/3</td>
-        <td class="px-4 py-2">224.0.0.0</td>
-        <td class="px-4 py-2">31.255.255.255</td>
-        <td class="px-4 py-2 text-right">2,147,483,648</td>
-        <td class="px-4 py-2 text-right">2,147,483,646</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/2</td>
-        <td class="px-4 py-2">192.0.0.0</td>
-        <td class="px-4 py-2">63.255.255.255</td>
-        <td class="px-4 py-2 text-right">4,294,967,296</td>
-        <td class="px-4 py-2 text-right">4,294,967,294</td>
-      </tr>
-      <tr class="border-b hover:bg-gray-50">
-        <td class="px-4 py-2">/1</td>
-        <td class="px-4 py-2">128.0.0.0</td>
-        <td class="px-4 py-2">127.255.255.255</td>
-        <td class="px-4 py-2 text-right">8,589,934,592</td>
-        <td class="px-4 py-2 text-right">8,589,934,590</td>
-      </tr>
-    </tbody>
-  </table>
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-4 py-2 text-left">CIDR</th>
+          <th class="px-4 py-2 text-left">Subnet Mask</th>
+          <th class="px-4 py-2 text-left">Wildcard</th>
+          <th class="px-4 py-2 text-right">Total IPs</th>
+          <th class="px-4 py-2 text-right">Usable Hosts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/32</td>
+          <td class="px-4 py-2">255.255.255.255</td>
+          <td class="px-4 py-2">0.0.0.0</td>
+          <td class="px-4 py-2 text-right">1</td>
+          <td class="px-4 py-2 text-right">1</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/31</td>
+          <td class="px-4 py-2">255.255.255.254</td>
+          <td class="px-4 py-2">0.0.0.1</td>
+          <td class="px-4 py-2 text-right">2</td>
+          <td class="px-4 py-2 text-right">2</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/30</td>
+          <td class="px-4 py-2">255.255.255.252</td>
+          <td class="px-4 py-2">0.0.0.3</td>
+          <td class="px-4 py-2 text-right">4</td>
+          <td class="px-4 py-2 text-right">2</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/29</td>
+          <td class="px-4 py-2">255.255.255.248</td>
+          <td class="px-4 py-2">0.0.0.7</td>
+          <td class="px-4 py-2 text-right">8</td>
+          <td class="px-4 py-2 text-right">6</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/28</td>
+          <td class="px-4 py-2">255.255.255.240</td>
+          <td class="px-4 py-2">0.0.0.15</td>
+          <td class="px-4 py-2 text-right">16</td>
+          <td class="px-4 py-2 text-right">14</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/27</td>
+          <td class="px-4 py-2">255.255.255.224</td>
+          <td class="px-4 py-2">0.0.0.31</td>
+          <td class="px-4 py-2 text-right">32</td>
+          <td class="px-4 py-2 text-right">30</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/26</td>
+          <td class="px-4 py-2">255.255.255.192</td>
+          <td class="px-4 py-2">0.0.0.63</td>
+          <td class="px-4 py-2 text-right">64</td>
+          <td class="px-4 py-2 text-right">62</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/25</td>
+          <td class="px-4 py-2">255.255.255.128</td>
+          <td class="px-4 py-2">0.0.0.127</td>
+          <td class="px-4 py-2 text-right">128</td>
+          <td class="px-4 py-2 text-right">126</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/24</td>
+          <td class="px-4 py-2">255.255.255.0</td>
+          <td class="px-4 py-2">0.0.0.255</td>
+          <td class="px-4 py-2 text-right">256</td>
+          <td class="px-4 py-2 text-right">254</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/23</td>
+          <td class="px-4 py-2">255.255.254.0</td>
+          <td class="px-4 py-2">0.0.1.255</td>
+          <td class="px-4 py-2 text-right">512</td>
+          <td class="px-4 py-2 text-right">510</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/22</td>
+          <td class="px-4 py-2">255.255.252.0</td>
+          <td class="px-4 py-2">0.0.3.255</td>
+          <td class="px-4 py-2 text-right">1,024</td>
+          <td class="px-4 py-2 text-right">1,022</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/21</td>
+          <td class="px-4 py-2">255.255.248.0</td>
+          <td class="px-4 py-2">0.0.7.255</td>
+          <td class="px-4 py-2 text-right">2,048</td>
+          <td class="px-4 py-2 text-right">2,046</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/20</td>
+          <td class="px-4 py-2">255.255.240.0</td>
+          <td class="px-4 py-2">0.0.15.255</td>
+          <td class="px-4 py-2 text-right">4,096</td>
+          <td class="px-4 py-2 text-right">4,094</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/19</td>
+          <td class="px-4 py-2">255.255.224.0</td>
+          <td class="px-4 py-2">0.0.31.255</td>
+          <td class="px-4 py-2 text-right">8,192</td>
+          <td class="px-4 py-2 text-right">8,190</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/18</td>
+          <td class="px-4 py-2">255.255.192.0</td>
+          <td class="px-4 py-2">0.0.63.255</td>
+          <td class="px-4 py-2 text-right">16,384</td>
+          <td class="px-4 py-2 text-right">16,382</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/17</td>
+          <td class="px-4 py-2">255.255.128.0</td>
+          <td class="px-4 py-2">0.0.127.255</td>
+          <td class="px-4 py-2 text-right">32,768</td>
+          <td class="px-4 py-2 text-right">32,766</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/16</td>
+          <td class="px-4 py-2">255.255.0.0</td>
+          <td class="px-4 py-2">0.0.255.255</td>
+          <td class="px-4 py-2 text-right">65,536</td>
+          <td class="px-4 py-2 text-right">65,534</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/15</td>
+          <td class="px-4 py-2">255.254.0.0</td>
+          <td class="px-4 py-2">0.1.255.255</td>
+          <td class="px-4 py-2 text-right">131,072</td>
+          <td class="px-4 py-2 text-right">131,070</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/14</td>
+          <td class="px-4 py-2">255.252.0.0</td>
+          <td class="px-4 py-2">0.3.255.255</td>
+          <td class="px-4 py-2 text-right">262,144</td>
+          <td class="px-4 py-2 text-right">262,142</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/13</td>
+          <td class="px-4 py-2">255.248.0.0</td>
+          <td class="px-4 py-2">0.7.255.255</td>
+          <td class="px-4 py-2 text-right">524,288</td>
+          <td class="px-4 py-2 text-right">524,286</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/12</td>
+          <td class="px-4 py-2">255.240.0.0</td>
+          <td class="px-4 py-2">0.15.255.255</td>
+          <td class="px-4 py-2 text-right">1,048,576</td>
+          <td class="px-4 py-2 text-right">1,048,574</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/11</td>
+          <td class="px-4 py-2">255.224.0.0</td>
+          <td class="px-4 py-2">0.31.255.255</td>
+          <td class="px-4 py-2 text-right">2,097,152</td>
+          <td class="px-4 py-2 text-right">2,097,150</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/10</td>
+          <td class="px-4 py-2">255.192.0.0</td>
+          <td class="px-4 py-2">0.63.255.255</td>
+          <td class="px-4 py-2 text-right">4,194,304</td>
+          <td class="px-4 py-2 text-right">4,194,302</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/9</td>
+          <td class="px-4 py-2">255.128.0.0</td>
+          <td class="px-4 py-2">0.127.255.255</td>
+          <td class="px-4 py-2 text-right">8,388,608</td>
+          <td class="px-4 py-2 text-right">8,388,606</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/8</td>
+          <td class="px-4 py-2">255.0.0.0</td>
+          <td class="px-4 py-2">0.255.255.255</td>
+          <td class="px-4 py-2 text-right">16,777,216</td>
+          <td class="px-4 py-2 text-right">16,777,214</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/7</td>
+          <td class="px-4 py-2">254.0.0.0</td>
+          <td class="px-4 py-2">1.255.255.255</td>
+          <td class="px-4 py-2 text-right">33,554,432</td>
+          <td class="px-4 py-2 text-right">33,554,430</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/6</td>
+          <td class="px-4 py-2">252.0.0.0</td>
+          <td class="px-4 py-2">3.255.255.255</td>
+          <td class="px-4 py-2 text-right">67,108,864</td>
+          <td class="px-4 py-2 text-right">67,108,862</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/5</td>
+          <td class="px-4 py-2">248.0.0.0</td>
+          <td class="px-4 py-2">7.255.255.255</td>
+          <td class="px-4 py-2 text-right">536,870,912</td>
+          <td class="px-4 py-2 text-right">536,870,910</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/4</td>
+          <td class="px-4 py-2">240.0.0.0</td>
+          <td class="px-4 py-2">15.255.255.255</td>
+          <td class="px-4 py-2 text-right">1,073,741,824</td>
+          <td class="px-4 py-2 text-right">1,073,741,822</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/3</td>
+          <td class="px-4 py-2">224.0.0.0</td>
+          <td class="px-4 py-2">31.255.255.255</td>
+          <td class="px-4 py-2 text-right">2,147,483,648</td>
+          <td class="px-4 py-2 text-right">2,147,483,646</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/2</td>
+          <td class="px-4 py-2">192.0.0.0</td>
+          <td class="px-4 py-2">63.255.255.255</td>
+          <td class="px-4 py-2 text-right">4,294,967,296</td>
+          <td class="px-4 py-2 text-right">4,294,967,294</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">/1</td>
+          <td class="px-4 py-2">128.0.0.0</td>
+          <td class="px-4 py-2">127.255.255.255</td>
+          <td class="px-4 py-2 text-right">8,589,934,592</td>
+          <td class="px-4 py-2 text-right">8,589,934,590</td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="mt-4 text-sm text-gray-600">
       <p><strong>Notes:</strong></p>
